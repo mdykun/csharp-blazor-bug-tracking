@@ -3,11 +3,11 @@
 @page "/new-bug" 
 
 <h3>Add New Bug</h3>
-<EditForm model="AddBug">
+<EditForm model="AddBug" OnValidSubmit="HandleValidSubmit">
     <InputText @bind-value="@AddBug.Title" placeholder="Enter Title"></InputText>
     <InputText @bind-value="@AddBug.Description" placeholder="Enter Description"></InputText>
     <InputNumber TValue="System.Int16" @bind-value="@AddBug.Priority"  placeholder="Enter Priority"></InputNumber>
-    <button type="submit" OnValidSubmit="HandleValidSubmit">Add Bug</button>
+    <button type="submit">Add Bug</button>
 </EditForm>
 
 @code {
