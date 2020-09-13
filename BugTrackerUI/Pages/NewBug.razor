@@ -7,13 +7,23 @@
     <InputText @bind-value="@AddBug.Title" placeholder="Enter Title"></InputText>
     <InputText @bind-value="@AddBug.Description" placeholder="Enter Description"></InputText>
     <InputNumber TValue="System.Int16" @bind-value="@AddBug.Priority"  placeholder="Enter Priority"></InputNumber>
-    <button type="submit">Add Bug</button>
+    <button type="submit" OnValidSubmit="HandleValidSubmit">Add Bug</button>
 </EditForm>
 
 @code {
 
     [Inject()]
     public IBugService BugService { get; set; }
+
+    [Inject]
+    public NavigationManager NavService { get; set; }
+
     
     public Bug AddBug { get; set; } = new Bug();
+
+    protected void HandleValidSubmit()
+    {
+        BugService.AddBug(AddBug);
+        NavService.NavigateTo("");
+    }
 }
