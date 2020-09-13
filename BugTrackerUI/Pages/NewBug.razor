@@ -1,16 +1,15 @@
 ﻿@using Microsoft.AspNetCore.Mvc.RazorPages
 
-@page "/new-bug" 
+@page "/new-bug"
 
 <h3>Add New Bug</h3>
 <EditForm model="AddBug" OnValidSubmit="HandleValidSubmit">
-    
+
     <DataAnnotationsValidator></DataAnnotationsValidator>
     <ValidationSummary></ValidationSummary>
-
-    <InputText @bind-value="@AddBug.Title" placeholder="Enter Title"></InputText>
-    <InputText @bind-value="@AddBug.Description" placeholder="Enter Description"></InputText>
-    <InputNumber TValue="System.Int16" @bind-value="@AddBug.Priority" placeholder="Enter Priority"></InputNumber>
+    <InputText @bind-Value="AddBug.Title" placeholder="Enter Title"></InputText>
+    <InputText @bind-Value="AddBug.Description" placeholder="Enter Description"></InputText>
+    <InputNumber @bind-Value="AddBug.Priority" placeholder="Enter Priority"></InputNumber>
     <button type="submit">Add Bug</button>
 </EditForm>
 
@@ -22,7 +21,7 @@
     [Inject]
     public NavigationManager NavService { get; set; }
 
-    
+
     public Bug AddBug { get; set; } = new Bug();
 
     protected void HandleValidSubmit()
